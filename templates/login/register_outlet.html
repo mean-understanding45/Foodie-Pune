@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Kodinger" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Join Us !!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login/register_outlet.css' %}" />
+</head>
+
+<body class="my-login-page">
+    <section class="h-100">
+        <div class="container h-100">
+            <div class="row justify-content-md-center h-100">
+                <div class="card-wrapper">
+                    <div class="brand">
+                    </div>
+                    <div class="card fat">
+                        <div class="card-body">
+                            <h4 class="card-title">Register Here!!</h4>
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="row ">
+                                    <div class="form-group col-md-6">
+                                        <label for="OutletName"><strong>Name of Outlet</strong>
+                                        </label>
+                                        <input type="text" class="form-control" id="OutletName" name="OutletName"
+                                            required />
+                                        <div class="invalid-feedback">Password is required</div>
+                                    </div>
+
+                                </div>
+                                <div class="row ">
+                                    <div class="form-group col-md-6">
+                                        <label for="FoodType"><strong>Type of food</strong></label>
+                                        <select name="FoodType" class="form-select btn"
+                                            aria-label="Default select example" required>
+                                            <option value="">Select </option>
+                                            <option value="Veg">Veg Only</option>
+                                            <option value="Veg/Non-veg">Both Veg & Non-veg</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label><strong>Is home delivery available?</strong></label>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="HomeDelivery"
+                                                id="inlineRadio1" value="Yes">
+                                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="HomeDelivery"
+                                                id="inlineRadio2" value="No">
+                                            <label class="form-check-label" for="inlineRadio2">No</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row ">
+                                    <div class="form-group col-md-6">
+                                        <label for="OwnerFirstName"><strong>First name of Owner/Manager</strong>
+                                        </label>
+                                        <input id="email" type="text" name="OwnerFirstName" class="form-control"
+                                            id="OwnerFirstName" required />
+                                        <div class="invalid-feedback">Password is required</div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="OwnerLastName"><strong>Last name of
+                                                Owner/Manager</strong></label>
+                                        <input id="email" type="text" name="OwnerLastName" class="form-control"
+                                            id="OwnerLastName" required data-eye />
+                                        <div class="invalid-feedback">Password is required</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Address"><strong>Address</strong></label>
+                                        <input id="email" type="text" class="form-control" id="Address" name="Address"
+                                            required data-eye />
+                                        <div class="invalid-feedback">Password is required</div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="AddressLink"><strong> Google Maps Link </strong></label>
+                                        <input id="email" type="url" class="form-control" id="AddressLink"
+                                            name="AddressLink" required data-eye />
+                                        <div class="invalid-feedback">Password is required</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Email"><strong>Email</strong></label>
+                                        <input id="email" type="email" class="form-control" id="Email" name="Email"
+                                            required data-eye />
+                                        <div class="invalid-feedback">Password is required</div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label id="email" for="Phone"><strong>Contact Number</strong></label>
+                                        <input type="tel" class="form-control" id="Phone" name="Phone" required
+                                            data-eye />
+                                        <div class="invalid-feedback">Password is required</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="exampleFormControlFile1"><strong> Upload atleast one photo of outlet</strong></label>
+                                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="outlet_img" required>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="custom-checkbox custom-control">
+                                        <input type="checkbox" name="remember" id="remember"
+                                            class="custom-control-input" required />
+                                        <label for="remember" class="custom-control-label">By creating an account you
+                                            agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.
+                                        </label></label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'js/login/login.js' %}"></script>
+
+</body>
+
+</html>

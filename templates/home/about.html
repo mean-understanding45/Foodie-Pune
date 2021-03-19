@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>FOODIE.COM</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link
+		href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+		rel='stylesheet' type='text/css'>
+	<link href="{% static 'css/home/all.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'css/home/templatemo-style.css' %}" rel="stylesheet" />
+</head>
+
+{% include 'home/header.html' %}
+
+<main>
+	<header class="row tm-welcome-section">
+		<h2 class="col-12 text-center tm-section-title">About Me </h2>
+		<p class="col-12 text-center">I'm 2nd year student pursing Computer Engineering in Pune Institue Of Computer
+			Technology(PICT),Pune</p>
+	</header>
+
+	<div class="tm-container-inner tm-persons">
+		<div class="row">
+			<article class="col-lg-6">
+				<figure class="tm-person">
+					<img src="{% static 'img/about4.jpg' %}" alt="Image" class="img-fluid tm-person-img" />
+					<figcaption class="tm-person-description">
+						<h4 class="tm-person-name">Navin Bhandari</h4>
+						<p class="tm-person-title">Full Stack Web Developer </p>
+						<p class="tm-person-about">Reach out to me at <a href="mailto:">navinbhandari45@gmail.com</a></p>
+						
+						<div>
+							<span>Connect with me</span>
+							<div>
+								
+								<a href="https://www.linkedin.com/in/navin-bhandari-a07a65186/"
+									class="tm-social-link"><i class="fab fa-linkedin tm-social-icon"></i></a>
+								<a href="https://www.facebook.com/navin.bhandari.52/" class="tm-social-link"><i
+										class="fab fa-facebook tm-social-icon"></i></a>
+								<a href="https://twitter.com/NavinB_45" class="tm-social-link"><i
+										class="fab fa-twitter tm-social-icon"></i></a>
+								<a href="https://www.instagram.com/night_warrior_55/" class="tm-social-link"><i
+										class="fab fa-instagram tm-social-icon"></i></a>
+
+							</div>
+						</div>
+					</figcaption>
+				</figure>
+			</article>
+		</div>
+	</div>
+	<div class="tm-container-inner tm-featured-image">
+		<div class="row">
+			<div class="col-12">
+				<div class="placeholder-2">
+					<div class="parallax-window-2" data-parallax="scroll"
+						data-image-src="{% static 'img/about-05.jpg' %}">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tm-container-inner tm-features">
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="tm-feature">
+					<i class="fas fa-4x fa-pepper-hot tm-feature-icon"></i>
+					<p class="tm-feature-description">Donec sed orci fermentum, convallis lacus id, tempus elit.
+						Sed eu
+						neque accumsan, porttitor arcu a, interdum est. Donec in risus eu ante.</p>
+					<a href="/" class="tm-btn tm-btn-primary">Read More</a>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="tm-feature">
+					<i class="fas fa-4x fa-seedling tm-feature-icon"></i>
+					<p class="tm-feature-description">Maecenas pretium rutrum molestie. Duis dignissim egestas
+						turpis
+						sit. Nam sed suscipit odio. Morbi in dolor finibus, consequat nisl eget.</p>
+					<a href="/" class="tm-btn tm-btn-success">Read More</a>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="tm-feature">
+					<i class="fas fa-4x fa-cocktail tm-feature-icon"></i>
+					<p class="tm-feature-description">Morbi in dolor finibus, consequat nisl eget, pretium nunc.
+						Maecenas pretium rutrum molestie. Duis dignissim egestas turpis sit.</p>
+					<a href="/" class="tm-btn tm-btn-danger">Read More</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</main>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/parallax.min.js' %}"></script>
+
+</div>
+</body>
+
+</html>

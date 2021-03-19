@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>FOODIE.COM</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link
+    href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
+  <link href="{% static 'css/home/templatemo-style.css' %}" rel="stylesheet" />
+
+
+
+</head>
+
+{% include 'home/header.html' %}
+
+<div class="tm-section tm-container-inner py-5">
+  <div class="row">
+    <div class="col-md-6 ">
+      <div class="tm-description-figure">
+        <img src="{{outlet.image.url}}" alt="" class="img-thumbnail" />
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <div class="tm-description-box">
+        <h2 class="tm-gallery-title">{{ outlet.outletname }}</h2>
+
+        <p class="tm-mb"><strong>Food Served: </strong>{{ outlet.foodtype }}</p>
+        <p class="tm-mb"><strong>Home delivery: </strong>{{ outlet.homedelivery }}</p>
+        <p class="tm-mb"><strong>Address: </strong>{{ outlet.address }}</p>
+        <p class="tm-mb"><strong>Contact: </strong>{{ outlet.phone }}</p>
+
+        <a href="about.html" class="tm-btn tm-btn-default tm-right">Book </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tm-container-inner-2 tm-map-section">
+  <div class="row">
+    <div class="col-12">
+      <div class="tm-map">
+        <iframe src={{outlet.iframeaddress}} frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/parallax.min.js' %}"></script>
+<script src="{% static 'js/home/vendor/jquery-1.11.0.min.js' %}"></script>
+<script src="{% static 'js/home/vendor/jquery.gmap3.min.js' %}"></script>
+<script src="{% static 'js/home/plugins.js' %}"></script>
+<script src="{% static 'js/home/main.js' %}"></script>
+
+<script>
+  $(document).ready(function () {
+    // Handle click on paging links
+    $(".tm-paging-link").click(function (e) {
+      e.preventDefault();
+
+      var page = $(this).text().toLowerCase();
+      $(".tm-gallery-page").addClass("hidden");
+      $("#tm-gallery-page-" + page).removeClass("hidden");
+      $(".tm-paging-link").removeClass("active");
+      $(this).addClass("active");
+    });
+  });
+</script>
+
+</body>
+
+</html>

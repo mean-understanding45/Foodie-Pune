@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>FOODIE.COM</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link href="{% static 'css/all.min.css' %}" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/templatemo1_style.css' %}">
+  <link href="{% static 'css/templatemo2-style.css' %}" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/templatemo_misc.css' %}">
+  <link rel="stylesheet" href="{% static 'css/flexslider.css' %}">
+  <link rel="stylesheet" href="{% static 'css/testimonails-slider.css' %}">
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/parallax.min.js' %}"></script>
+<script>
+	$(document).ready(function () {
+	  // Handle click on paging links
+	  $(".tm-paging-link").click(function (e) {
+		e.preventDefault();
+
+		var page = $(this).text().toLowerCase();
+		$(".tm-gallery-page").addClass("hidden");
+		$("#tm-gallery-page-" + page).removeClass("hidden");
+		$(".tm-paging-link").removeClass("active");
+		$(this).addClass("active");
+	  });
+	});
+  </script>
+
+</head>
+
+<body>
+  <div class="container" style="padding: 0%;">
+    <!-- Top box -->
+    <!-- Logo & Site Name -->
+    <div class="placeholder">
+      <div class="parallax-window" data-parallax="scroll" data-image-src="{% static 'img/simple-house-01.jpg' %}">
+        <div class="tm-header">
+          <div class="row tm-header-inner">
+            <div class="col-md-6 col-12">
+              <img src="{% static 'img/simple-house-logo.png' %}" alt="Logo" class="tm-site-logo" />
+              <div class="tm-site-text-box">
+                <h1 class="tm-site-title">FOODIE.COM</h1>
+                <h6 class="tm-site-description">Your home food</h6>
+              </div>
+            </div>
+            <nav class="col-md-6 col-12 tm-nav">
+              <ul class="tm-nav-ul">
+                <li class="tm-nav-li">
+                  <a href="/" class="tm-nav-link active">Home</a>
+                </li>
+                <li class="tm-nav-li">
+                  <a href="/home/about/" class="tm-nav-link">About</a>
+                </li>
+                <li class="tm-nav-li">
+                  <a href="/home/contact_us/" class="tm-nav-link">Contact</a>
+                <li class="tm-nav-li">
+                  <a href="/auth/login/" class="tm-nav-link">Login</a>
+                </li>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% if messages %} {% for message in messages %}
+    <div class="container-fluid px-0">
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0 py-1" role="alert">
+        <strong>Thank You !! Our team will soon get back you.</strong>
+        <button type="button" class="btn-close py-0 my-2" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+    {% endfor %} {% endif %}
+
+    {% block main %} {% endblock %}
+    <footer class="tm-footer text-center">
+      <p>
+        Copyright &copy; 2020 Simple House | Design:
+        <a rel="nofollow" href="https://templatemo.com">TemplateMo</a>
+      </p>
+    </footer>
+  </div>
+</body>
+
+</html>

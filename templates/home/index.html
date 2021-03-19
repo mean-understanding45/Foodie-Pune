@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>FOODIE.COM</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link
+		href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+		rel='stylesheet' type='text/css'>
+	<link href="{% static 'css/home/templatemo-style.css' %}" rel="stylesheet" />
+
+
+
+</head>
+
+{% include 'home/header.html' %}
+
+	<div id="services">
+		<div class="container ">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="heading-section">
+						<h2 >Features</h2>
+						<img src="{% static 'img/under-heading.png' %}" alt="">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 col-sm-12">
+					<div class="service-item">
+						<div class="icon">
+							<i class="fa fa-pencil"></i>
+						</div>
+						<h4>Make an order</h4>
+						<p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec
+							arcu nec hendrerit. Sed arcu sagittis vel diam in, malesuada malesuada risus. Aenean a sem
+							leoneski.</p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-12">
+					<div class="service-item">
+						<div class="icon">
+							<i class="fa fa-bullhorn"></i>
+						</div>
+						<h4>Promotions</h4>
+						<p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec
+							arcu nec hendrerit. Sed arcu sagittis vel diam in, malesuada malesuada risus. Aenean a sem
+							leoneski.</p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-12">
+					<div class="service-item">
+						<div class="icon">
+							<i class="fa fa-bell"></i>
+						</div>
+						<h4>Ready to Serve</h4>
+						<p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec
+							arcu nec hendrerit. Sed arcu sagittis vel diam in, malesuada malesuada risus. Aenean a sem
+							leoneski.</p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-12">
+					<div class="service-item">
+						<div class="icon">
+							<i class="fa fa-heart"></i>
+						</div>
+						<h4>Satisfaction</h4>
+						<p>Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus. Ut dignissim nec
+							arcu nec hendrerit. Sed arcu sagittis vel diam in, malesuada malesuada risus. Aenean a sem
+							leoneski.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="latest-blog">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="heading-section">
+						<h2>Best Home Food Here </h2>
+						<img src="{% static 'img/under-heading.png' %}" alt="">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+					{% for outlet in outlets %}
+				<div class="col-md-4 col-sm-6">
+					<div class="blog-post">
+						<div class="blog-thumb">
+							<img src="{{outlet.image.url}}" alt="" height="240" width="300"/>
+						</div>
+						<div class="blog-content">
+							<div class="content-show">
+								<h4><a href="{% url 'outlet' outlet.id %}">{{ outlet.outletname }}</a></h4>
+								<span>{{ outlet.foodtype }}</span>
+							</div>
+							<div class="content-hide">
+								<p>Address: {{ outlet.address }}</p>
+								<p>Contact: {{outlet.phone}}</p>
+						</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/parallax.min.js' %}"></script>
+	<script src="{% static 'js/home/vendor/jquery-1.11.0.min.js' %}"></script>
+	<script src="{% static 'js/home/vendor/jquery.gmap3.min.js' %}"></script>
+	<script src="{% static 'js/home/plugins.js' %}"></script>
+	<script src="{% static 'js/home/main.js' %}"></script>
+
+	<script>
+		$(document).ready(function () {
+			// Handle click on paging links
+			$(".tm-paging-link").click(function (e) {
+				e.preventDefault();
+
+				var page = $(this).text().toLowerCase();
+				$(".tm-gallery-page").addClass("hidden");
+				$("#tm-gallery-page-" + page).removeClass("hidden");
+				$(".tm-paging-link").removeClass("active");
+				$(this).addClass("active");
+			});
+		});
+	</script>
+
+</body>
+
+</html>
