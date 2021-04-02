@@ -19,67 +19,126 @@
 
 </head>
 
-{% include 'home/header.html' %}
 
-<div class="tm-section tm-container-inner py-5">
-  <div class="row">
-    <div class="col-md-6 ">
-      <div class="tm-description-figure">
-        <img src="{{outlet.image.url}}" alt="" class="img-thumbnail" />
-      </div>
+<body>
+  <!-- Top box -->
+  <!-- Logo & Site Name -->
+  <div class="placeholder">
+    <div class="parallax-window" data-parallax="scroll" data-image-src="{% static 'img/simple-house-01.jpg' %}">
+      <div class="tm-header">
+        <div class="row tm-header-inner">
+          <div class="col-md-6 col-12">
+            <img src="{% static 'img/logo.png' %}" alt="Logo" class="tm-site-logo" />
+            <div class="tm-site-text-box">
+              <h1 class="tm-site-title">FOODIE.COM</h1>
+              <h6 class="tm-site-description">Your home food</h6>
+            </div>
+          </div>
+          <nav class="col-md-6 col-12 tm-nav">
+            <ul class="tm-nav-ul">
+              <li class="tm-nav-li">
+                <a href="/" class="tm-nav-link">Home</a>
+              </li>
+              <li class="tm-nav-li">
+                <a href="{% url 'about' %}" class="tm-nav-link">About</a>
+              </li>
+              <li class="tm-nav-li ">
+                <a href="{% url 'contactus' %}" class="tm-nav-link ">Contact</a>
+              </li>
 
-    </div>
-    <div class="col-md-6">
-      <div class="tm-description-box">
-        <h2 class="tm-gallery-title">{{ outlet.outletname }}</h2>
+              <li class="tm-nav-li">
+                <a href="{% url 'register' %}" class="tm-nav-link">Join us</a>
+              </li>
+        
+              {% if user.is_authenticated %}
+              <li class="tm-nav-li">
+                <a href="{% url 'logout' %}" class="tm-nav-link">Logout</a>
+              </li>
+              {% else %}
 
-        <p class="tm-mb"><strong>Food Served: </strong>{{ outlet.foodtype }}</p>
-        <p class="tm-mb"><strong>Home delivery: </strong>{{ outlet.homedelivery }}</p>
-        <p class="tm-mb"><strong>Address: </strong>{{ outlet.address }}</p>
-        <p class="tm-mb"><strong>Contact: </strong>{{ outlet.phone }}</p>
-
-        <a href="about.html" class="tm-btn tm-btn-default tm-right">Book </a>
+              <li class="tm-nav-li">
+                <a href="{% url 'login' %}" class="tm-nav-link">Login</a>
+              </li>
+              {% endif %}
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="tm-container-inner-2 tm-map-section">
-  <div class="row">
-    <div class="col-12">
-      <div class="tm-map">
-        <iframe src={{outlet.iframeaddress}} frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+  {% if messages %}
+  {% for message in messages %}
+  <div class="container-fluid px-0">
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+      <strong>{{ message }}</strong>
+    </div>
+  </div>
+  {% endfor %} {% endif %}
+
+
+  <div class="tm-section tm-container-inner py-5">
+    <div class="row">
+      <div class="col-md-6 ">
+        <div class="tm-description-figure">
+          <img src="{{outlet.image.url}}" alt="" class="img-thumbnail" />
+        </div>
+
+      </div>
+      <div class="col-md-6">
+        <div class="tm-description-box">
+          <h2 class="tm-gallery-title">{{ outlet.outletname }}</h2>
+
+          <p class="tm-mb"><strong>Food Served: </strong>{{ outlet.foodtype }}</p>
+          <p class="tm-mb"><strong>Home delivery: </strong>{{ outlet.homedelivery }}</p>
+          <p class="tm-mb"><strong>Address: </strong>{{ outlet.address }}</p>
+          <p class="tm-mb"><strong>Contact: </strong>{{ outlet.phone }}</p>
+
+          <!-- <a href="about.html" class="tm-btn tm-btn-default tm-right">Book </a> -->
+        </div>
       </div>
     </div>
   </div>
-</div>
+  <div class="tm-container-inner-2 tm-map-section">
+    <div class="row">
+      <div class="col-12">
+        <div class="tm-map">
+          <iframe src={{outlet.iframeaddress}} frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="{% static 'js/jquery.min.js' %}"></script>
-<script src="{% static 'js/parallax.min.js' %}"></script>
-<script src="{% static 'js/home/vendor/jquery-1.11.0.min.js' %}"></script>
-<script src="{% static 'js/home/vendor/jquery.gmap3.min.js' %}"></script>
-<script src="{% static 'js/home/plugins.js' %}"></script>
-<script src="{% static 'js/home/main.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/parallax.min.js' %}"></script>
+  <script src="{% static 'js/home/vendor/jquery-1.11.0.min.js' %}"></script>
+  <script src="{% static 'js/home/vendor/jquery.gmap3.min.js' %}"></script>
+  <script src="{% static 'js/home/plugins.js' %}"></script>
+  <script src="{% static 'js/home/main.js' %}"></script>
 
-<script>
-  $(document).ready(function () {
-    // Handle click on paging links
-    $(".tm-paging-link").click(function (e) {
-      e.preventDefault();
+  <script>
+    $(document).ready(function () {
+      // Handle click on paging links
+      $(".tm-paging-link").click(function (e) {
+        e.preventDefault();
 
-      var page = $(this).text().toLowerCase();
-      $(".tm-gallery-page").addClass("hidden");
-      $("#tm-gallery-page-" + page).removeClass("hidden");
-      $(".tm-paging-link").removeClass("active");
-      $(this).addClass("active");
+        var page = $(this).text().toLowerCase();
+        $(".tm-gallery-page").addClass("hidden");
+        $("#tm-gallery-page-" + page).removeClass("hidden");
+        $(".tm-paging-link").removeClass("active");
+        $(this).addClass("active");
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
 

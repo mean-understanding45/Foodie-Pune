@@ -20,6 +20,16 @@
                     <div class="brand">
                     </div>
                     <div class="card fat">
+
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="container-fluid px-0">
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0 py-1"
+                                role="alert">
+                                <strong>{{ message }}</strong>
+                            </div>
+                        </div>
+                        {% endfor %} {% endif %}
                         <div class="card-body">
                             <h4 class="card-title">Register Here!!</h4>
                             <form method="POST" enctype="multipart/form-data">
@@ -105,8 +115,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for="exampleFormControlFile1"><strong> Upload atleast one photo of outlet</strong></label>
-                                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="outlet_img" required>
+                                        <label for="exampleFormControlFile1"><strong> Upload atleast one photo of
+                                                outlet</strong></label>
+                                        <input type="file" class="form-control-file" id="exampleFormControlFile1"
+                                            name="outlet_img" required>
                                     </div>
                                 </div>
                                 <div class="form-group ">

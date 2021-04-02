@@ -16,92 +16,144 @@
 	<link href="{% static 'css/home/templatemo-style.css' %}" rel="stylesheet" />
 </head>
 
-{% include 'home/header.html' %}
 
-<main>
-	<header class="row tm-welcome-section">
-		<h2 class="col-12 text-center tm-section-title">About Me </h2>
-		<p class="col-12 text-center">I'm 2nd year student pursing Computer Engineering in Pune Institue Of Computer
-			Technology(PICT),Pune</p>
-	</header>
-
-	<div class="tm-container-inner tm-persons">
-		<div class="row">
-			<article class="col-lg-6">
-				<figure class="tm-person">
-					<img src="{% static 'img/about4.jpg' %}" alt="Image" class="img-fluid tm-person-img" />
-					<figcaption class="tm-person-description">
-						<h4 class="tm-person-name">Navin Bhandari</h4>
-						<p class="tm-person-title">Full Stack Web Developer </p>
-						<p class="tm-person-about">Reach out to me at <a href="mailto:">navinbhandari45@gmail.com</a></p>
-						
-						<div>
-							<span>Connect with me</span>
-							<div>
-								
-								<a href="https://www.linkedin.com/in/navin-bhandari-a07a65186/"
-									class="tm-social-link"><i class="fab fa-linkedin tm-social-icon"></i></a>
-								<a href="https://www.facebook.com/navin.bhandari.52/" class="tm-social-link"><i
-										class="fab fa-facebook tm-social-icon"></i></a>
-								<a href="https://twitter.com/NavinB_45" class="tm-social-link"><i
-										class="fab fa-twitter tm-social-icon"></i></a>
-								<a href="https://www.instagram.com/night_warrior_55/" class="tm-social-link"><i
-										class="fab fa-instagram tm-social-icon"></i></a>
-
-							</div>
+<body>
+	<!-- Top box -->
+	<!-- Logo & Site Name -->
+	<div class="placeholder">
+		<div class="parallax-window" data-parallax="scroll" data-image-src="{% static 'img/simple-house-01.jpg' %}">
+			<div class="tm-header">
+				<div class="row tm-header-inner">
+					<div class="col-md-6 col-12">
+						<img src="{% static 'img/logo.png' %}" alt="Logo" class="tm-site-logo" />
+						<div class="tm-site-text-box">
+							<h1 class="tm-site-title">FOODIE.COM</h1>
+							<h6 class="tm-site-description">Your home food</h6>
 						</div>
-					</figcaption>
-				</figure>
-			</article>
+					</div>
+					<nav class="col-md-6 col-12 tm-nav">
+						<ul class="tm-nav-ul">
+							<li class="tm-nav-li">
+								<a href="/" class="tm-nav-link">Home</a>
+							</li>
+							<li class="tm-nav-li">
+								<a href="{% url 'about' %}" class="tm-nav-link active">About</a>
+							</li>
+							<li class="tm-nav-li ">
+								<a href="{% url 'contactus' %}" class="tm-nav-link">Contact</a>
+							<li class="tm-nav-li">
+								<a href="{% url 'register' %}" class="tm-nav-link">Join us</a>
+							</li>
+							{% if user.is_authenticated %}
+							<li class="tm-nav-li">
+								<a href="{% url 'logout' %}" class="tm-nav-link">Logout</a>
+							</li>
+							{% else %}
+
+							<li class="tm-nav-li">
+								<a href="{% url 'login' %}" class="tm-nav-link">Login</a>
+							</li>
+							{% endif %}
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
 		</div>
 	</div>
-	<div class="tm-container-inner tm-featured-image">
-		<div class="row">
-			<div class="col-12">
-				<div class="placeholder-2">
-					<div class="parallax-window-2" data-parallax="scroll"
-						data-image-src="{% static 'img/about-05.jpg' %}">
+	{% if messages %}
+	{% for message in messages %}
+	<div class="container-fluid px-0">
+		<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+			<strong>{{ message }}</strong>
+		</div>
+	</div>
+	{% endfor %} {% endif %}
+
+	<main>
+		<header class="row tm-welcome-section">
+			<h2 class="col-12 text-center tm-section-title">About Me </h2>
+			<p class="col-12 text-center">I'm 2nd year student pursing Computer Engineering in Pune Institue Of Computer
+				Technology(PICT),Pune</p>
+		</header>
+
+		<div class="tm-container-inner tm-persons">
+			<div class="row">
+				<article class="col-lg-6">
+					<figure class="tm-person">
+						<img src="{% static 'img/about4.jpg' %}" alt="Image" class="img-fluid tm-person-img" />
+						<figcaption class="tm-person-description px-3 ">
+							<h4 class="tm-person-name">Navin Bhandari</h4>
+							<p class="tm-person-title">Full Stack Web Developer </p>
+							<p class="tm-person-about">Reach out to me at <a
+									href="mailto:">navinbhandari45@gmail.com</a></p>
+
+							<div>
+								<span>Connect with me</span>
+								<div>
+
+									<a href="https://www.linkedin.com/in/navin-bhandari-a07a65186/"
+										class="tm-social-link"><i class="fab fa-linkedin tm-social-icon"></i></a>
+									<a href="https://www.facebook.com/navin.bhandari.52/" class="tm-social-link"><i
+											class="fab fa-facebook tm-social-icon"></i></a>
+									<a href="https://twitter.com/NavinB_45" class="tm-social-link"><i
+											class="fab fa-twitter tm-social-icon"></i></a>
+									<a href="https://www.instagram.com/night_warrior_55/" class="tm-social-link"><i
+											class="fab fa-instagram tm-social-icon"></i></a>
+								</div>
+							</div>
+						</figcaption>
+					</figure>
+				</article>
+			</div>
+		</div>
+		<div class="tm-container-inner tm-featured-image">
+			<div class="row">
+				<div class="col-12">
+					<div class="placeholder-2">
+						<div class="parallax-window-2" data-parallax="scroll"
+							data-image-src="{% static 'img/about-05.jpg' %}">
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="tm-container-inner tm-features">
-		<div class="row">
-			<div class="col-lg-4">
-				<div class="tm-feature">
-					<i class="fas fa-4x fa-pepper-hot tm-feature-icon"></i>
-					<p class="tm-feature-description">Donec sed orci fermentum, convallis lacus id, tempus elit.
-						Sed eu
-						neque accumsan, porttitor arcu a, interdum est. Donec in risus eu ante.</p>
-					<a href="/" class="tm-btn tm-btn-primary">Read More</a>
+		<div class="tm-container-inner tm-features">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="tm-feature">
+						<i class="fas fa-4x fa-pepper-hot tm-feature-icon"></i>
+						<p class="tm-feature-description">Donec sed orci fermentum, convallis lacus id, tempus elit.
+							Sed eu
+							neque accumsan, porttitor arcu a, interdum est. Donec in risus eu ante.</p>
+						<a href="/" class="tm-btn tm-btn-primary">Read More</a>
+					</div>
 				</div>
-			</div>
-			<div class="col-lg-4">
-				<div class="tm-feature">
-					<i class="fas fa-4x fa-seedling tm-feature-icon"></i>
-					<p class="tm-feature-description">Maecenas pretium rutrum molestie. Duis dignissim egestas
-						turpis
-						sit. Nam sed suscipit odio. Morbi in dolor finibus, consequat nisl eget.</p>
-					<a href="/" class="tm-btn tm-btn-success">Read More</a>
+				<div class="col-lg-4">
+					<div class="tm-feature">
+						<i class="fas fa-4x fa-seedling tm-feature-icon"></i>
+						<p class="tm-feature-description">Maecenas pretium rutrum molestie. Duis dignissim egestas
+							turpis
+							sit. Nam sed suscipit odio. Morbi in dolor finibus, consequat nisl eget.</p>
+						<a href="/" class="tm-btn tm-btn-success">Read More</a>
+					</div>
 				</div>
-			</div>
-			<div class="col-lg-4">
-				<div class="tm-feature">
-					<i class="fas fa-4x fa-cocktail tm-feature-icon"></i>
-					<p class="tm-feature-description">Morbi in dolor finibus, consequat nisl eget, pretium nunc.
-						Maecenas pretium rutrum molestie. Duis dignissim egestas turpis sit.</p>
-					<a href="/" class="tm-btn tm-btn-danger">Read More</a>
+				<div class="col-lg-4">
+					<div class="tm-feature">
+						<i class="fas fa-4x fa-cocktail tm-feature-icon"></i>
+						<p class="tm-feature-description">Morbi in dolor finibus, consequat nisl eget, pretium nunc.
+							Maecenas pretium rutrum molestie. Duis dignissim egestas turpis sit.</p>
+						<a href="/" class="tm-btn tm-btn-danger">Read More</a>
+					</div>
 				</div>
 			</div>
 		</div>
+
+	</main>
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/parallax.min.js' %}"></script>
+
 	</div>
-
-</main>
-<script src="{% static 'js/jquery.min.js' %}"></script>
-<script src="{% static 'js/parallax.min.js' %}"></script>
-
-</div>
 </body>
 
 </html>
