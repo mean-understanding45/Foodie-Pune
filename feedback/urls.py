@@ -23,6 +23,6 @@ from . import views
 urlpatterns = [
     path('', views.IndexView.as_view(), name='home'),
     path('home/about/', views.AboutView.as_view(), name='about'),
-    path('home/contact_us/', views.ContactView.as_view(), name='contactus'),
+    path('home/contact_us/', views.contactus, name='contactus'),
     path('home/outlet/<int:pk>', views.OutletView.as_view(), name='outlet'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

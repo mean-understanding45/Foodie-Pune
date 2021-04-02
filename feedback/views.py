@@ -7,8 +7,17 @@ from django.contrib import messages
 from rest_framework.renderers import JSONRenderer
 from django.views.generic import View,DetailView
 from feedback.forms import ContactForm
+import re
 # Create your views here.
 
+
+def is_email_vaild(email):
+    regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+    if(re.search(regex, email)):
+        return True
+
+    else:
+        False
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
@@ -22,18 +31,36 @@ class AboutView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'home/about.html')
 
-
-class ContactView(View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'home/contactus.html')
-
-    def post(self, request, *args, **kwargs):
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            p = form.save()
+def contactus(request):
+    if request.method == "POST":
+        email = request.POST.get('email')
+        if (is_email_vaild(email)):
+            name = request.POST.get('name')
+            message = request.POST.get('message')
+            date = datetime.today()
+            contact = Feedback(name=name, email=email, message=message, date=date)
+            contact.save()
             messages.success(request, 'Thank you for reaching out to us!!')
-            return redirect('home')
-        return render(request, 'home/contactus.html')
+            return render(request, 'home/index.html')
+        else:
+            messages.error(
+                request, f'Invalid Email')
+            return render(request, 'home/contactus.html')
+    return render(request, 'home/contactus.html')
+
+# class ContactView(View):
+#     def get(self, request, *args, **kwargs):
+#         return render(request, 'home/contactus.html')
+
+#     def post(self, request, *args, **kwargs):
+#         form = ContactForm(request.POST)
+#         email = request.POST.get('Email')
+#         print(email)
+#         if form.is_valid():
+#             p = form.save()
+#             messages.success(request, 'Thank you for reaching out to us!!')
+#             return redirect('home')
+#         return render(request, 'home/contactus.html')
 
 
 class OutletView(View):
@@ -52,17 +79,6 @@ class OutletView(View):
 #     return render(request, 'home/outlet.html', context)
 
 
-# def contactus(request):
-#     if request.method == "POST":
-#         name = request.POST.get('name')
-#         email = request.POST.get('email')
-#         desc = request.POST.get('message')
-#         date = datetime.today()
-#         contact = Feedback(name=name, email=email, desc=desc, date=date)
-#         contact.save()
-#         messages.success(request, 'Success')
-#         return render(request, 'home/index.html')
-#     return render(request, 'home/contactus.html')
 
 
 # def index(request):
